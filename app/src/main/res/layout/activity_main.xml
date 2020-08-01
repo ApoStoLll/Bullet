@@ -34,6 +34,14 @@
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
+    <fragment
+        android:id="@+id/fragment_holder"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:name="com.example.bullet.ui.BlankFragment">
+
+    </fragment>
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
