@@ -1,5 +1,6 @@
 package com.example.bullet.ui.main
 
+import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.ViewModel
 import com.example.bullet.MainActivity
 import com.example.bullet.R
