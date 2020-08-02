@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "816039122304",
+    "firebase_url": "https://bullet-9f0d2.firebaseio.com",
+    "project_id": "bullet-9f0d2",
+    "storage_bucket": "bullet-9f0d2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:816039122304:android:321f2af7991cc6f1e85d65",
+        "android_client_info": {
+          "package_name": "com.example.bullet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "816039122304-eurk6r9161vqbn9egsajre004ld241r3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCz9oZ8gtC_FbT8qPhytmeTNV97ujX0emg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "816039122304-eurk6r9161vqbn9egsajre004ld241r3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
