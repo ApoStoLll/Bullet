@@ -14,6 +14,8 @@ import com.google.android.material.tabs.TabLayout
 
 class MainScreenFragment : Fragment() {
 
+    private lateinit var viewModel: MainScreenVM
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -31,13 +33,8 @@ class MainScreenFragment : Fragment() {
         tabs.setupWithViewPager(viewPager)
         val fab: FloatingActionButton = (activity as MainActivity).findViewById(R.id.fab)
         fab.setOnClickListener {
-//            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                    .setAction("Action", null).show()
-            val addFragment = AddOrderFragment.newInstance("HI", "HI")
-            val transaction = (activity as MainActivity).supportFragmentManager.beginTransaction()
-            transaction.replace(R.id.fragment_holder,addFragment)
-            transaction.addToBackStack(null)
-            transaction.commit()
+            viewModel.addOrder()
+
         }
     }
 
