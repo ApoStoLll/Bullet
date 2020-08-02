@@ -5,10 +5,11 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import com.example.bullet.R
+import com.example.bullet.ui.main.orderList.OrderListFragment
 
 private val TAB_TITLES = arrayOf(
-        R.string.tab_text_1,
-        R.string.tab_text_2
+        R.string.tab_list,
+        R.string.tab_map
 )
 
 /**
@@ -21,7 +22,10 @@ class SectionsPagerAdapter(private val context: Context, fm: FragmentManager)
     override fun getItem(position: Int): Fragment {
         // getItem is called to instantiate the fragment for the given page.
         // Return a PlaceholderFragment (defined as a static inner class below).
-        return PlaceholderFragment.newInstance(position )
+        return if(position == 0){
+            OrderListFragment()
+        } else
+            PlaceholderFragment.newInstance(position)
     }
 
     override fun getPageTitle(position: Int): CharSequence? {
