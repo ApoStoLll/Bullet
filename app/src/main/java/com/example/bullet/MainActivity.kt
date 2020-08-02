@@ -3,6 +3,8 @@ package com.example.bullet
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.bullet.ui.main.MainScreenFragment
+import com.google.firebase.FirebaseApp
+import com.google.firebase.database.FirebaseDatabase
 
 class MainActivity : AppCompatActivity() {
 
