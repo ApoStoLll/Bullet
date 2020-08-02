@@ -19,22 +19,22 @@ class PlaceholderFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        pageViewModel = ViewModelProviders.of(this).get(PageViewModel::class.java).apply {
-            setIndex(arguments?.getInt(ARG_SECTION_NUMBER) ?: 1)
-        }
+//        pageViewModel = ViewModelProviders.of(this).get(PageViewModel::class.java).apply {
+//            setIndex(arguments?.getInt(ARG_SECTION_NUMBER) ?: 1)
+//        }
     }
 
-    override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
-    ): View? {
-        val root = inflater.inflate(R.layout.fragment_main, container, false)
-        val textView: TextView = root.findViewById(R.id.section_label)
-        pageViewModel.text.observe(this, Observer<String> {
-            textView.text = it
-        })
-        return root
-    }
+//    override fun onCreateView(
+//            inflater: LayoutInflater, container: ViewGroup?,
+//            savedInstanceState: Bundle?
+//    ): View? {
+//        val root = inflater.inflate(R.layout.fragment_main, container, false)
+//        val textView: TextView = root.findViewById(R.id.textView)
+//        pageViewModel.text.observe(this, Observer<String> {
+//            textView.text = it
+//        })
+//        return root
+//    }
 
     companion object {
         /**

@@ -9,7 +9,6 @@ import com.example.bullet.R
 
 class BlankFragment : androidx.fragment.app.Fragment() {
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
