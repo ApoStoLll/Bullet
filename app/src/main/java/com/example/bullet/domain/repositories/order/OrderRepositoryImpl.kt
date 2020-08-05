@@ -8,19 +8,20 @@ import kotlinx.coroutines.Deferred
 
 class OrderRepositoryImpl() : OrderRepository  {
 
-    var dbRef : DatabaseReference
+    private var dbRef : DatabaseReference
 
     init {
         val db = FirebaseDatabase.getInstance()
-        dbRef = db.reference
+        dbRef = db.getReference("orders")
     }
 
     override fun fetchOrders() : MutableLiveData<List<Order>> {
         TODO("Not yet implemented")
     }
 
-    override fun addOrder(title : String, description : String, from : String, to : String, customer : String) {
-        TODO("Not yet implemented")
+    override fun addOrder(order : Order) {
+        //dbRef.setValue("hello")
+        dbRef.child(order.customerId.toString()).setValue(order)
     }
 
 

@@ -6,5 +6,5 @@ import kotlinx.coroutines.Deferred
 
 interface OrderRepository{
      fun fetchOrders() : MutableLiveData<List<Order>>
-     fun addOrder(title : String, description : String, from : String, to : String, customer : String)
+     fun addOrder(order : Order)
 }

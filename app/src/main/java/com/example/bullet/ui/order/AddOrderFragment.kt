@@ -38,5 +38,14 @@ class AddOrderFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_add_order, container, false)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        button_add_order.setOnClickListener {
+            viewModel.sendOrder(title = order_title.text.toString(),
+                description =  order_description.text.toString(),from = order_from.text.toString(),
+                to = order_to.text.toString())
+        }
+    }
+
 
 }
