@@ -6,24 +6,39 @@
     tools:context=".ui.order.AddOrderFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <androidx.appcompat.widget.AppCompatEditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/order_title" />
 
-    <androidx.appcompat.widget.AppCompatEditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/order_description" />
-
-    <androidx.appcompat.widget.AppCompatSpinner
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/order_from" />
-
-    <androidx.appcompat.widget.AppCompatSpinner
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/order_to" />
+        android:orientation="vertical" >
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/order_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/order_description" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/order_from" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/order_to" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_add_order"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Button" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
 
 </FrameLayout>
