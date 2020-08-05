@@ -45,6 +45,7 @@ class AddOrderFragment : Fragment() {
                 description =  order_description.text.toString(),from = order_from.text.toString(),
                 to = order_to.text.toString())
         }
+        viewModel.updateData()
     }
 
 
