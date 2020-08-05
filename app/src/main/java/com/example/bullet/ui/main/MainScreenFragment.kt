@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager.widget.ViewPager
 import com.example.bullet.MainActivity
 import com.example.bullet.R
@@ -24,7 +25,7 @@ import kotlinx.android.synthetic.main.fragment_order_list.*
 class MainScreenFragment : Fragment() {
 
     private lateinit var viewModel: MainScreenVM
-    private lateinit var mAdapter: OrderListAdapter
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,23 +37,14 @@ class MainScreenFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-//        mAdapter = OrderListAdapter()
-//        mAdapter.attachClickHandler(object : OrderClickHandler {
-//            override fun onItemClick(item: Int) {
-//                val bundle = Bundle()
-//                bundle.putInt("number",item)
-////                recyclerCarries.findNavController().navigate(R.id.carryAntipickFragment, bundle)
-//            }
-//        })
+
         return inflater.inflate(R.layout.fragment_main, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        RecycleOrders.layoutManager = GridLayoutManager(context, 1)
-//        RecycleOrders.adapter = mAdapter
-//        RecycleOrders.recycledViewPool.setMaxRecycledViews(0, 0)
+
 
 
         val sectionsPagerAdapter = SectionsPagerAdapter(activity as MainActivity, (activity as MainActivity).supportFragmentManager)
