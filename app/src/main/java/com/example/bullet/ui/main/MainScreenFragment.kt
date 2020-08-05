@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.viewpager.widget.ViewPager
 import com.example.bullet.MainActivity
@@ -24,28 +26,33 @@ class MainScreenFragment : Fragment() {
     private lateinit var viewModel: MainScreenVM
     private lateinit var mAdapter: OrderListAdapter
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        viewModel = ViewModelProviders.of(this).get(MainScreenVM::class.java)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        mAdapter = OrderListAdapter()
-        mAdapter.attachClickHandler(object : OrderClickHandler {
-            override fun onItemClick(item: Int) {
-                val bundle = Bundle()
-                bundle.putInt("number",item)
-//                recyclerCarries.findNavController().navigate(R.id.carryAntipickFragment, bundle)
-            }
-        })
+//        mAdapter = OrderListAdapter()
+//        mAdapter.attachClickHandler(object : OrderClickHandler {
+//            override fun onItemClick(item: Int) {
+//                val bundle = Bundle()
+//                bundle.putInt("number",item)
+////                recyclerCarries.findNavController().navigate(R.id.carryAntipickFragment, bundle)
+//            }
+//        })
         return inflater.inflate(R.layout.fragment_main, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        RecycleOrders.layoutManager = GridLayoutManager(context, 1)
-        RecycleOrders.adapter = mAdapter
-        RecycleOrders.recycledViewPool.setMaxRecycledViews(0, 0)
+//        RecycleOrders.layoutManager = GridLayoutManager(context, 1)
+//        RecycleOrders.adapter = mAdapter
+//        RecycleOrders.recycledViewPool.setMaxRecycledViews(0, 0)
 
 
         val sectionsPagerAdapter = SectionsPagerAdapter(activity as MainActivity, (activity as MainActivity).supportFragmentManager)
@@ -57,10 +64,11 @@ class MainScreenFragment : Fragment() {
         fab.setOnClickListener {
             viewModel.addOrder()
             val addFragment = AddOrderFragment.newInstance("HI", "HI")
-            val transaction =  (activity as MainActivity).supportFragmentManager.beginTransaction()
-            transaction.replace(R.id.fragment_holder,addFragment)
-            transaction.addToBackStack(null)
-            transaction.commit()
+            val navController = Navigation.findNavController(fab).navigate(R.id.addOrderFragment)
+//            val transaction =  (activity as MainActivity).supportFragmentManager.beginTransaction()
+//            transaction.replace(R.id.fragment_holder,addFragment)
+//            transaction.addToBackStack(null)
+//            transaction.commit()
 
         }
     }
