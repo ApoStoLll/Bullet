@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import com.example.bullet.R
+import com.example.bullet.ui.main.maps.MapsFragment
 import com.example.bullet.ui.main.orderList.OrderListFragment
 
 private val TAB_TITLES = arrayOf(
@@ -25,7 +26,7 @@ class SectionsPagerAdapter(private val context: Context, fm: FragmentManager)
         return if(position == 0){
             OrderListFragment()
         } else
-            PlaceholderFragment.newInstance(position)
+            MapsFragment()
     }
 
     override fun getPageTitle(position: Int): CharSequence? {
