@@ -55,7 +55,6 @@ class MainScreenFragment : Fragment() {
         val fab: FloatingActionButton = (activity as MainActivity).findViewById(R.id.fab)
         fab.setOnClickListener {
             viewModel.addOrder()
-            val addFragment = AddOrderFragment.newInstance("HI", "HI")
             val navController = Navigation.findNavController(fab).navigate(R.id.addOrderFragment)
 //            val transaction =  (activity as MainActivity).supportFragmentManager.beginTransaction()
 //            transaction.replace(R.id.fragment_holder,addFragment)
