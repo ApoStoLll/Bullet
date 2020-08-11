@@ -1,28 +1,21 @@
 package com.example.bullet.ui.main.orderList
 
-import android.graphics.ColorSpace.Model
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.annotation.NonNull
+import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.bullet.R
-import com.example.bullet.adapters.OrderClickHandler
-import com.example.bullet.adapters.OrderListAdapter
 import com.example.bullet.domain.models.Order
 import com.example.bullet.helpers.OrderListState
-import com.firebase.ui.database.FirebaseListOptions
 import com.firebase.ui.database.FirebaseRecyclerAdapter
 import com.firebase.ui.database.FirebaseRecyclerOptions
-import com.firebase.ui.database.SnapshotParser
-import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.Query
 import kotlinx.android.synthetic.main.fragment_order_list.*
@@ -39,20 +32,21 @@ class OrderListFragment : Fragment() {
     ): View? {
         viewModel = ViewModelProviders.of(this).get(OrderListViewModel::class.java)
         // Inflate the layout for this fragment
-        adapter = OrderListAdapter()
-        val orderList = listOf(
-            Order(1,"seseg","ege","segeg",52,"seesfe",56),
-            Order(1,"seseg","ege","segeg",52,"seesfe",56)
-        )
-        adapter.setData(orderList)
-        adapter.attachClickHandler(object : OrderClickHandler {
-            override fun onItemClick(item: Int) {
-                val bundle = Bundle()
-                bundle.putInt("number",item)
-//                recyclerCarries.findNavController().navigate(R.id.carryAntipickFragment, bundle)
-            }
-        })
-        Log.e("tab","works1")
+//        adapter = OrderListAdapter()
+//        val orderList = listOf(
+//            Order(1,"seseg","ege","segeg",52,"seesfe",56),
+//            Order(1,"seseg","ege","segeg",52,"seesfe",56)
+//        )
+//        adapter.setData(orderList)
+//        adapter.attachClickHandler(object : OrderClickHandler {
+//            override fun onItemClick(item: Int) {
+//                val bundle = Bundle()
+//                bundle.putInt("number",item)
+////                recyclerCarries.findNavController().navigate(R.id.carryAntipickFragment, bundle)
+//            }
+//        })
+//        Log.e("tab","works1")
+
         return inflater.inflate(R.layout.fragment_order_list, container, false)
     }
 
@@ -76,10 +70,14 @@ class OrderListFragment : Fragment() {
             }
 
         })
-        Log.e("tab","works2")
-        RecycleOrders.layoutManager = GridLayoutManager(context,1) // Grid
-        RecycleOrders.adapter = adapter
-        RecycleOrders.recycledViewPool.setMaxRecycledViews(0, 0)
+//        Log.e("tab","works2")
+//        RecycleOrders.layoutManager = GridLayoutManager(context,1) // Grid
+//        RecycleOrders.adapter = adapter
+//        RecycleOrders.recycledViewPool.setMaxRecycledViews(0, 0)
+        val linearLayoutManager =  LinearLayoutManager(context)
+        RecycleOrders1.layoutManager = linearLayoutManager
+        RecycleOrders1.setHasFixedSize(true);
+        fetch()
     }
 
     private fun fetch() {
@@ -108,27 +106,49 @@ class OrderListFragment : Fragment() {
             ): ViewHolder {
                 val view: View = LayoutInflater.from(parent.context)
                     .inflate(R.layout.order, parent, false)
-                return object : ViewHolder(view)
+                return ViewHolder(view)
             }
+
+
 
             override fun onBindViewHolder(
                 holder: ViewHolder,
                 position: Int,
                 model: Order
             ) {
-                holder.setTxtTitle(model.getmTitle())
-                holder.setTxtDesc(model.getmDesc())
-                holder.root.setOnClickListener(View.OnClickListener {
-                    Toast.makeText(this@MainActivity, position.toString(), Toast.LENGTH_SHORT)
-                        .show()
-                })
+                holder.setTitle(model.title)
+                holder.setDistance(model.id.toString())
+
+
             }
 
         }
-        recyclerView.setAdapter(adapter)
+        RecycleOrders1.adapter = adapter
     }
 
+    open class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+//        var root: LinearLayout
+        var orderTitle: TextView
+        var orderDistance: TextView
+        fun setTitle(string: String?) {
+            orderTitle.text = string
+        }
 
+        fun setDistance(string: String?) {
+            orderDistance.text = string
+        }
+
+        init {
+//            root = itemView.findViewById(R.id.order_name)
+            orderTitle = itemView.findViewById(R.id.order_name)
+            orderDistance = itemView.findViewById(R.id.order_distance)
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        adapter.startListening()
+    }
 
 
 }

@@ -3,6 +3,7 @@ package com.example.bullet.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bullet.R
 import com.example.bullet.domain.models.Order
@@ -39,18 +40,12 @@ class OrderListAdapter : RecyclerView.Adapter<OrderListAdapter.OrderListViewHold
     }
 
     class OrderListViewHolder(itemView: View, private val orderClickHandler: OrderClickHandler?) : RecyclerView.ViewHolder(itemView) {
-//        private val imgAvatar = itemView.findViewById<ImageView>(R.id.heroImage)
-//        private val cellView = itemView.findViewById<FrameLayout>(R.id.flHeroItem)
+        private val orderTitle = itemView.findViewById<TextView>(R.id.order_name)
+        private val orderDistance = itemView.findViewById<TextView>(R.id.order_distance)
 
         fun bind(source: Order) {
-//            cellView.setOnClickListener {
-//                heroClickHandler?.onItemClick(item = source)
-//            }
-//
-//            Glide.with(itemView.context)
-//                .load(source.avatar)
-//                .fitCenter()
-//                .into(imgAvatar)
+            orderTitle.text = source.title
+            orderDistance.text = "24"
         }
     }
 }

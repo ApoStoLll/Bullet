@@ -15,7 +15,7 @@ class AddOrderViewModel : ViewModel(){
 
     fun sendOrder(title : String, description : String, from : String, to : String){
         val order = Order(title = title, description = description, from = from, to = to,
-            customerId = 1, id = 0, orderPrice = 3)
+            customerId = 1, id = 2, orderPrice = 3)
         orderRepository.addOrder(order)
     }
 

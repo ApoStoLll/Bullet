@@ -6,12 +6,9 @@
     tools:context=".ui.main.orderList.OrderListFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/RecycleOrders"
+        android:id="@+id/RecycleOrders1"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
