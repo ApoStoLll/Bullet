@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager.widget.ViewPager
 import com.example.bullet.MainActivity
 import com.example.bullet.R
-import com.example.bullet.adapters.OrderClickHandler
 import com.example.bullet.adapters.OrderListAdapter
 import com.example.bullet.domain.models.Order
 import com.example.bullet.helpers.Keys

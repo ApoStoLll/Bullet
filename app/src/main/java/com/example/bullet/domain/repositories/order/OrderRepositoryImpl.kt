@@ -10,7 +10,7 @@ import java.util.*
 
 class OrderRepositoryImpl() : OrderRepository  {
 
-    private var dbRef : DatabaseReference
+    override lateinit var dbRef : DatabaseReference
 
     init {
         val db = FirebaseDatabase.getInstance()
@@ -26,9 +26,9 @@ class OrderRepositoryImpl() : OrderRepository  {
         dbRef.child(order.id.toString()).setValue(order)
     }
 
-    override fun readData(listener : ValueEventListener){
-        dbRef.addValueEventListener(listener)
-    }
+//    override fun readData(listener : ValueEventListener){
+//        dbRef.addValueEventListener(listener)
+//    }
 
 
 }

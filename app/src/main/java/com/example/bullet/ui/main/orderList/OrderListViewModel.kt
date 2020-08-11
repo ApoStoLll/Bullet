@@ -8,36 +8,31 @@ import com.example.bullet.domain.repositories.order.OrderRepository
 import com.example.bullet.domain.repositories.order.OrderRepositoryImpl
 import com.example.bullet.extensions.default
 import com.example.bullet.helpers.OrderListState
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.ValueEventListener
+import com.firebase.ui.database.FirebaseRecyclerOptions
+import com.google.firebase.database.*
 
 class OrderListViewModel : ViewModel() {
 
     val state = MutableLiveData<OrderListState>().default(initialValue = OrderListState.LoadingState)
     private var orderRepository : OrderRepository = OrderRepositoryImpl()
-    val orderList = listOf(
-        Order(1,"seseg","ege","segeg",52,"seesfe",56),
-        Order(1,"seseg","ege","segeg",52,"seesfe",56)
-    )
 
-
-    fun updateData(){
-        val listener = object : ValueEventListener {
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                // Get Post object and use the values to update the UI
-                val order = dataSnapshot.value
-                // orderList.add
-                Log.e("ORDER", order.toString())
+    fun getFirebaseOptions(): FirebaseRecyclerOptions<Order> {
+        val query = orderRepository.dbRef
+        val options = FirebaseRecyclerOptions.Builder<Order>()
+            .setQuery(query
+            ) { snapshot ->
+                Order(
+                    snapshot.child("id").value.toString().toInt(),
+                    snapshot.child("title").value.toString(),
+                    snapshot.child("from").value.toString(),
+                    snapshot.child("to").value.toString(),
+                    snapshot.child("customerId").value.toString().toInt(),
+                    snapshot.child("description").value.toString(),
+                    snapshot.child("orderPrice").value.toString().toInt()
+                )
             }
-
-            override fun onCancelled(databaseError: DatabaseError) {
-                // Getting Post failed, log a message
-                Log.w("TAG", "loadPost:onCancelled", databaseError.toException())
-                // ...
-            }
-        }
-        orderRepository.readData(listener)
+            .build()
+        return options
     }
 
 }
