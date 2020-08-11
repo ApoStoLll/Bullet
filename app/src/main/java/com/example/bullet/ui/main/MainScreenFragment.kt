@@ -1,6 +1,7 @@
 package com.example.bullet.ui.main
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -37,21 +38,19 @@ class MainScreenFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
-        return inflater.inflate(R.layout.fragment_main, container, false)
+        val  v = inflater.inflate(R.layout.fragment_main, container, false)
+        return v
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-
-
 
         val sectionsPagerAdapter = SectionsPagerAdapter(activity as MainActivity, (activity as MainActivity).supportFragmentManager)
         val viewPager: ViewPager = (activity as MainActivity).findViewById(R.id.view_pager)
         viewPager.adapter = sectionsPagerAdapter
         val tabs: TabLayout = (activity as MainActivity).findViewById(R.id.tabs)
         tabs.setupWithViewPager(viewPager)
+
         val fab: FloatingActionButton = (activity as MainActivity).findViewById(R.id.fab)
         fab.setOnClickListener {
             viewModel.addOrder()
@@ -63,5 +62,7 @@ class MainScreenFragment : Fragment() {
 
         }
     }
+
+
 
 }

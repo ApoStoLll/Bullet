@@ -1,6 +1,7 @@
 package com.example.bullet.ui.main.orderList
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -40,7 +41,7 @@ class OrderListFragment : Fragment() {
 //                recyclerCarries.findNavController().navigate(R.id.carryAntipickFragment, bundle)
             }
         })
-
+        Log.e("tab","works1")
         return inflater.inflate(R.layout.fragment_order_list, container, false)
     }
 
@@ -64,7 +65,7 @@ class OrderListFragment : Fragment() {
             }
 
         })
-
+        Log.e("tab","works2")
         RecycleOrders.layoutManager = GridLayoutManager(context,1) // Grid
         RecycleOrders.adapter = mAdapter
         RecycleOrders.recycledViewPool.setMaxRecycledViews(0, 0)
