@@ -44,8 +44,7 @@ class MainScreenFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        val sectionsPagerAdapter = SectionsPagerAdapter(activity as MainActivity, (activity as MainActivity).supportFragmentManager)
+        val sectionsPagerAdapter = SectionsPagerAdapter(activity as MainActivity, childFragmentManager)
         val viewPager: ViewPager = (activity as MainActivity).findViewById(R.id.view_pager)
         viewPager.adapter = sectionsPagerAdapter
         val tabs: TabLayout = (activity as MainActivity).findViewById(R.id.tabs)
@@ -62,7 +61,6 @@ class MainScreenFragment : Fragment() {
 
         }
     }
-
 
 
 }

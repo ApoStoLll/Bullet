@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "328469014692",
+    "firebase_url": "https://bullet-40390.firebaseio.com",
+    "project_id": "bullet-40390",
+    "storage_bucket": "bullet-40390.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:328469014692:android:8fcd327beccabb1e5e5e31",
+        "android_client_info": {
+          "package_name": "com.example.bullet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "328469014692-l6knevho578203i7r9q6gngr6tbdqskh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.bullet",
+            "certificate_hash": "cf85ca575481ab4172be94d33fb1b3716efa376a"
+          }
+        },
+        {
+          "client_id": "328469014692-rmcipispkpdp68vh64tbo5gifq5iu3vj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZsHJ8VHk_W9BsyqvgE666qxws5_Q29os"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "328469014692-rmcipispkpdp68vh64tbo5gifq5iu3vj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
