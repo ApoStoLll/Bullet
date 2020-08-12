@@ -8,11 +8,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.bullet.R
 import com.example.bullet.adapters.OrderClickHandler
 import com.example.bullet.adapters.OrderListAdapter
 import com.example.bullet.domain.models.Order
+import com.example.bullet.screens.orderInfo.OrderInfoFragment
 import com.firebase.ui.database.FirebaseRecyclerAdapter
 import kotlinx.android.synthetic.main.fragment_order_list.*
 
@@ -62,7 +65,11 @@ class OrderListFragment : Fragment() {
         (adapter as OrderListAdapter).attachClickHandler(object : OrderClickHandler{
             @SuppressLint("ShowToast")
             override fun onItemClick(item: Order) {
-                Log.e("KEK", item.title)
+//                Log.e("KEK", item.title)
+                val bundle = Bundle()
+                bundle.putInt("param1",item.id)
+                RecycleOrders.findNavController().navigate(R.id.orderInfoFragment,bundle)
+
             }
         })
         RecycleOrders.adapter = adapter
