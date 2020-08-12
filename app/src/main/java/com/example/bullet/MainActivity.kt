@@ -15,14 +15,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val navController = Navigation.findNavController(this, R.id.nav_host_fragment)
         navController.navigate(R.id.mainScreenFragment)
-        //start()
     }
-
-//    private fun start(){
-//        val transaction = supportFragmentManager.beginTransaction()
-//        transaction.replace(R.id.fragment_holder, MainScreenFragment())
-//        transaction.addToBackStack(null)
-//        transaction.commit()
-//    }
 
 }

@@ -61,10 +61,10 @@ class OrderListFragment : Fragment() {
 //
 //        })
         val linearLayoutManager =  LinearLayoutManager(context)
-        RecycleOrders1.layoutManager = linearLayoutManager
-        RecycleOrders1.setHasFixedSize(true);
+        RecycleOrders.layoutManager = linearLayoutManager
+        RecycleOrders.setHasFixedSize(true);
         adapter = OrderListAdapter(viewModel.getFirebaseOptions())
-        RecycleOrders1.adapter = adapter
+        RecycleOrders.adapter = adapter
     }
 
 
