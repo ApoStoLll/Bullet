@@ -40,8 +40,17 @@ class AddOrderFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         button_add_order.setOnClickListener {
             viewModel.sendOrder(title = order_title.text.toString(),
-                description =  order_description.text.toString(),from = order_from.text.toString(),
-                to = order_to.text.toString())
+                description =  order_description.text.toString(),
+                from = order_from.text.toString(),
+                to = order_to.text.toString(),
+                price = order_price.text.toString().toInt())
+        }
+
+        button_choose_on_map_from.setOnClickListener{
+            order_from.text = "from map fragment"
+        }
+        button_choose_on_map_to.setOnClickListener{
+            order_to.text = "to map fragment"
         }
 //        viewModel.updateData()
     }

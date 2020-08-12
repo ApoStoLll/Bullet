@@ -9,7 +9,7 @@ class AddOrderViewModel : ViewModel(){
 
     private var orderRepository : OrderRepository = OrderRepositoryImpl()
 
-    fun sendOrder(title : String, description : String, from : String, to : String){
+    fun sendOrder(title : String, description : String, from : String, to : String, price:Int){
         val order = Order(title = title, description = description, from = from, to = to,
             customerId = 1, id = 2, orderPrice = 3)
         orderRepository.addOrder(order)

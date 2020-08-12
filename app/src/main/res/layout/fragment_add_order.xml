@@ -15,28 +15,70 @@
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/order_title"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:hint="Title" />
 
         <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/order_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/order_description" />
+            android:hint="Description" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="From"
+                android:layout_marginRight="200dp"
+                android:id="@+id/order_from" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button_choose_on_map_from"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:text="MapFrom" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="To"
+                android:layout_marginRight="200dp"
+                android:id="@+id/order_to" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button_choose_on_map_to"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="MapTo" />
+
+
+        </LinearLayout>
+
 
         <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/order_price"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/order_from" />
-
-        <androidx.appcompat.widget.AppCompatEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/order_to" />
+            android:hint="Price" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button_add_order"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:text="Order" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 

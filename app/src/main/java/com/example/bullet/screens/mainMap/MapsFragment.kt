@@ -1,4 +1,4 @@
-package com.example.bullet.screens.maps
+package com.example.bullet.screens.mainMap
 
 import androidx.fragment.app.Fragment
 
@@ -27,8 +27,11 @@ class MapsFragment : Fragment() {
          * user has installed Google Play services and returned to the app.
          */
         val sydney = LatLng(-34.0, 151.0)
+        val kyiv = LatLng(50.45,30.5)
         googleMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
-        googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
+        googleMap.addMarker(MarkerOptions().position(kyiv).title("Marker in Kyiv"))
+        googleMap.moveCamera(CameraUpdateFactory.newLatLng(kyiv))
+
     }
 
     override fun onCreateView(

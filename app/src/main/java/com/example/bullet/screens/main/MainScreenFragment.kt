@@ -10,6 +10,7 @@ import androidx.navigation.Navigation
 import androidx.viewpager.widget.ViewPager
 import com.example.bullet.MainActivity
 import com.example.bullet.R
+import com.example.bullet.adapters.SectionsPagerAdapter
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.tabs.TabLayout
 
@@ -34,7 +35,11 @@ class MainScreenFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val sectionsPagerAdapter = SectionsPagerAdapter(activity as MainActivity, childFragmentManager)
+        val sectionsPagerAdapter =
+            SectionsPagerAdapter(
+                activity as MainActivity,
+                childFragmentManager
+            )
         val viewPager: ViewPager = (activity as MainActivity).findViewById(R.id.view_pager)
         viewPager.adapter = sectionsPagerAdapter
         val tabs: TabLayout = (activity as MainActivity).findViewById(R.id.tabs)

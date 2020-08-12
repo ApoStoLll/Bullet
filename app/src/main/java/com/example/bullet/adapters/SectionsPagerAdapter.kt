@@ -1,4 +1,4 @@
-package com.example.bullet.screens.main
+package com.example.bullet.adapters
 
 import android.content.Context
 import android.util.Log
@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import com.example.bullet.R
-import com.example.bullet.screens.maps.MapsFragment
+import com.example.bullet.screens.mainMap.MapsFragment
 import com.example.bullet.screens.orderList.OrderListFragment
 
 private val TAB_TITLES = arrayOf(
