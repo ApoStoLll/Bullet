@@ -3,31 +3,46 @@ package com.example.bullet.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bullet.R
 import com.example.bullet.domain.models.Order
-import com.example.bullet.ui.main.orderList.OrderListFragment
 import com.firebase.ui.database.FirebaseRecyclerAdapter
 import com.firebase.ui.database.FirebaseRecyclerOptions
 
+interface OrderClickHandler{
+    fun onItemClick(item : Order)
+}
 
 class OrderListAdapter(options: FirebaseRecyclerOptions<Order>) : FirebaseRecyclerAdapter<Order, OrderListAdapter.ViewHolder>(
     options
 ) {
+
+    private var orderClickHandler : OrderClickHandler? = null
+
+    public fun attachClickHandler(orderClickHandler: OrderClickHandler){
+        this.orderClickHandler = orderClickHandler
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OrderListAdapter.ViewHolder {
         val view: View = LayoutInflater.from(parent.context)
             .inflate(R.layout.order, parent, false)
         return ViewHolder(view)
     }
 
+
     override fun onBindViewHolder(holder: OrderListAdapter.ViewHolder, position: Int, model: Order) {
         holder.setTitle(model.title)
         holder.setDistance(model.id.toString())
+        holder.root.setOnClickListener{
+            orderClickHandler?.onItemClick(item = model)
+        }
     }
 
     open class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        //        var root: LinearLayout
+        var root : ConstraintLayout = itemView.findViewById(R.id.item_root)
         private var orderTitle: TextView =  itemView.findViewById(R.id.order_name)
         private var orderDistance: TextView = itemView.findViewById(R.id.order_distance)
 

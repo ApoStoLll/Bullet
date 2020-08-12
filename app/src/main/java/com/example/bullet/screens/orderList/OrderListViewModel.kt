@@ -1,6 +1,5 @@
-package com.example.bullet.ui.main.orderList
+package com.example.bullet.screens.orderList
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.bullet.domain.models.Order
@@ -9,7 +8,6 @@ import com.example.bullet.domain.repositories.order.OrderRepositoryImpl
 import com.example.bullet.extensions.default
 import com.example.bullet.helpers.OrderListState
 import com.firebase.ui.database.FirebaseRecyclerOptions
-import com.google.firebase.database.*
 
 class OrderListViewModel : ViewModel() {
 

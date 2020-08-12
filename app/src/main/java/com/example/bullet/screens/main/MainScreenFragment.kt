@@ -1,26 +1,17 @@
-package com.example.bullet.ui.main
+package com.example.bullet.screens.main
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager.widget.ViewPager
 import com.example.bullet.MainActivity
 import com.example.bullet.R
-import com.example.bullet.adapters.OrderListAdapter
-import com.example.bullet.domain.models.Order
-import com.example.bullet.helpers.Keys
-import com.example.bullet.ui.order.AddOrderFragment
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.tabs.TabLayout
-import kotlinx.android.synthetic.main.fragment_main.*
-import kotlinx.android.synthetic.main.fragment_order_list.*
 
 class MainScreenFragment : Fragment() {
 

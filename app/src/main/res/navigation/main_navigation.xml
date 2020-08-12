@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/mainScreenFragment"
-        android:name="com.example.bullet.ui.main.MainScreenFragment"
+        android:name="com.example.bullet.screens.main.MainScreenFragment"
         android:label="MainScreenFragment" >
         <action
             android:id="@+id/action_mainScreenFragment_to_orderListFragment"
@@ -19,17 +19,17 @@
 
     <fragment
         android:id="@+id/orderListFragment"
-        android:name="com.example.bullet.ui.main.orderList.OrderListFragment"
+        android:name="com.example.bullet.screens.orderList.OrderListFragment"
         android:label="fragment_order_list"
         tools:layout="@layout/fragment_order_list" />
     <fragment
         android:id="@+id/mapsFragment"
-        android:name="com.example.bullet.ui.main.maps.MapsFragment"
+        android:name="com.example.bullet.screens.maps.MapsFragment"
         android:label="fragment_maps"
         tools:layout="@layout/fragment_maps" />
     <fragment
         android:id="@+id/addOrderFragment"
-        android:name="com.example.bullet.ui.order.AddOrderFragment"
+        android:name="com.example.bullet.screens.addOrder.AddOrderFragment"
         android:label="fragment_add_order"
         tools:layout="@layout/fragment_add_order" />
 

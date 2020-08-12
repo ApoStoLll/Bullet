@@ -7,8 +7,10 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import kotlinx.coroutines.Deferred
 import java.util.*
+import javax.inject.Inject
 
-class OrderRepositoryImpl() : OrderRepository  {
+
+class OrderRepositoryImpl : OrderRepository  {
 
     override lateinit var dbRef : DatabaseReference
 

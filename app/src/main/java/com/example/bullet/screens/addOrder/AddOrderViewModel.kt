@@ -1,13 +1,9 @@
-package com.example.bullet.ui.order
+package com.example.bullet.screens.addOrder
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.example.bullet.domain.models.Order
 import com.example.bullet.domain.repositories.order.OrderRepository
 import com.example.bullet.domain.repositories.order.OrderRepositoryImpl
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.ValueEventListener
 
 class AddOrderViewModel : ViewModel(){
 

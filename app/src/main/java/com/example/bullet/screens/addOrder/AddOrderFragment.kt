@@ -1,13 +1,11 @@
-package com.example.bullet.ui.order
+package com.example.bullet.screens.addOrder
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.OnBackPressedCallback
 import androidx.lifecycle.ViewModelProviders
-import androidx.navigation.Navigation
 import com.example.bullet.R
 import kotlinx.android.synthetic.main.fragment_add_order.*
 

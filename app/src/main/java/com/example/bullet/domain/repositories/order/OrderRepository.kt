@@ -5,8 +5,9 @@ import com.example.bullet.domain.models.Order
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
 import kotlinx.coroutines.Deferred
+import javax.inject.Inject
 
-interface OrderRepository{
+interface  OrderRepository {
      val dbRef : DatabaseReference
      fun fetchOrders() : MutableLiveData<List<Order>>
      fun addOrder(order : Order)

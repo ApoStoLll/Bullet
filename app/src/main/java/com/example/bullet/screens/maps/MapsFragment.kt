@@ -1,4 +1,4 @@
-package com.example.bullet.ui.main.maps
+package com.example.bullet.screens.maps
 
 import androidx.fragment.app.Fragment
 
@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import com.example.bullet.R
 
 import com.google.android.gms.maps.CameraUpdateFactory
-import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng

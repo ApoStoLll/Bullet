@@ -1,24 +1,19 @@
-package com.example.bullet.ui.main.orderList
+package com.example.bullet.screens.orderList
 
+import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.bullet.R
+import com.example.bullet.adapters.OrderClickHandler
 import com.example.bullet.adapters.OrderListAdapter
 import com.example.bullet.domain.models.Order
-import com.example.bullet.helpers.OrderListState
 import com.firebase.ui.database.FirebaseRecyclerAdapter
-import com.firebase.ui.database.FirebaseRecyclerOptions
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.Query
 import kotlinx.android.synthetic.main.fragment_order_list.*
 
 
@@ -62,8 +57,14 @@ class OrderListFragment : Fragment() {
 //        })
         val linearLayoutManager =  LinearLayoutManager(context)
         RecycleOrders.layoutManager = linearLayoutManager
-        RecycleOrders.setHasFixedSize(true);
+        RecycleOrders.setHasFixedSize(true)
         adapter = OrderListAdapter(viewModel.getFirebaseOptions())
+        (adapter as OrderListAdapter).attachClickHandler(object : OrderClickHandler{
+            @SuppressLint("ShowToast")
+            override fun onItemClick(item: Order) {
+                Log.e("KEK", item.title)
+            }
+        })
         RecycleOrders.adapter = adapter
     }
 
