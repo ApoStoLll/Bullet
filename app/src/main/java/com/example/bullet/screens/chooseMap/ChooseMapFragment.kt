@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.app.ShareCompat
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import com.example.bullet.MainActivity
 import com.example.bullet.R
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -31,7 +32,6 @@ import java.util.*
 class ChooseMapFragment : Fragment() {
 
     var googleMap : GoogleMap? = null
-
     private val callback = OnMapReadyCallback { googleMap ->
         /**
          * Manipulates the map once available.
@@ -74,6 +74,11 @@ class ChooseMapFragment : Fragment() {
         choose_map_search_button.setOnClickListener {
             onSearchCalled()
         }
+
+        button_ready.setOnClickListener{
+            button_ready.findNavController().popBackStack()
+        }
+
     }
 
     fun onSearchCalled() {
