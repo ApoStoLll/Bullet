@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.example.bullet.MainActivity
 import com.example.bullet.R
+import com.example.bullet.domain.models.NewPlace
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -32,19 +33,36 @@ import java.util.*
 class ChooseMapFragment : Fragment() {
 
     var googleMap : GoogleMap? = null
-    var choosenPlace : LatLng? = null
-
+    var choosenPlace : NewPlace? = null
+    var startPlace : LatLng? = null
     //Если вдруг почему-то карта не успеет загрузится до выбора локации, то локация не выберется, странно (смотри в он активити резалт)
 
     private val callback = OnMapReadyCallback { googleMap ->
         this.googleMap = googleMap
+
+        if(startPlace != LatLng(0.0,0.0)){
+            googleMap?.apply {
+                addMarker(MarkerOptions().position(startPlace!!).title("From"))
+                moveCamera(CameraUpdateFactory.newLatLng(startPlace))
+                animateCamera(CameraUpdateFactory.zoomTo(17.07f))
+            }
+        }
+
+
         googleMap.setOnMapLongClickListener {
             googleMap.apply {
                 clear()
                 addMarker(MarkerOptions().position(it).title("CustomMarker"))
-                choosenPlace = it
+                choosenPlace = NewPlace("On map",it)
             }
 
+        }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        arguments?.let {
+            startPlace = LatLng(it.getDouble("Lat"),it.getDouble("Lng"))
         }
     }
 
@@ -99,7 +117,7 @@ class ChooseMapFragment : Fragment() {
                             moveCamera(CameraUpdateFactory.newLatLng(place.latLng))
                             animateCamera(CameraUpdateFactory.zoomTo(17.07f))
                         }
-                        choosenPlace = place.latLng
+                        choosenPlace = NewPlace(place.name,place.latLng)
                         Log.e("TAG", "Place: ${place.name}, ${place.id}, ${place.latLng}")
                     }
                 }

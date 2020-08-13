@@ -24,15 +24,12 @@
             android:layout_height="wrap_content"
             android:hint="Description" />
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="From"
+                android:hint="Enter from or choose on map"
                 android:layout_marginRight="200dp"
                 android:id="@+id/order_from" />
 
@@ -40,11 +37,11 @@
                 android:id="@+id/button_choose_on_map_from"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="end"
+                android:layout_gravity="center"
                 android:text="MapFrom" />
 
 
-        </LinearLayout>
+
 
         <LinearLayout
             android:orientation="horizontal"

@@ -3,6 +3,7 @@ package com.example.bullet
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.Navigation
+import com.example.bullet.domain.models.NewPlace
 import com.example.bullet.screens.addOrder.AddOrderFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.libraries.places.api.Places
@@ -11,7 +12,7 @@ import com.google.android.libraries.places.api.net.PlacesClient
 
 class MainActivity : AppCompatActivity() {
 
-    var place : LatLng? = null
+    var place : NewPlace? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -21,9 +22,9 @@ class MainActivity : AppCompatActivity() {
         navController.navigate(R.id.mainScreenFragment)
     }
 
-    fun setCoorditanesTo(place : Place?){
-        val addOrder = supportFragmentManager.findFragmentById(R.id.addOrderFragment) as? AddOrderFragment
-        //addOrder?.setCoorditanes(place)
-    }
+//    fun setCoorditanesTo(place : Place?){
+//        val addOrder = supportFragmentManager.findFragmentById(R.id.addOrderFragment) as? AddOrderFragment
+//        //addOrder?.setCoorditanes(place)
+//    }
 
 }
