@@ -52,5 +52,23 @@
         android:id="@+id/chooseMapFragment"
         android:name="com.example.bullet.screens.chooseMap.ChooseMapFragment"
         android:label="ChooseMapFragment" />
+    <fragment
+        android:id="@+id/authFragment"
+        android:name="com.example.bullet.screens.auth.AuthFragment"
+        android:label="fragment_auth"
+        tools:layout="@layout/fragment_auth" >
+        <action
+            android:id="@+id/action_authFragment_to_verifyFragment"
+            app:destination="@id/verifyFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/verifyFragment"
+        android:name="com.example.bullet.screens.auth.VerifyFragment"
+        android:label="fragment_verify"
+        tools:layout="@layout/fragment_verify" >
+        <action
+            android:id="@+id/action_verifyFragment_to_mainScreenFragment"
+            app:destination="@id/mainScreenFragment" />
+    </fragment>
 
 </navigation>

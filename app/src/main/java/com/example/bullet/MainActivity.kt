@@ -22,6 +22,7 @@ class MainActivity : AppCompatActivity() {
         navController.navigate(R.id.mainScreenFragment)
     }
 
+
 //    fun setCoorditanesTo(place : Place?){
 //        val addOrder = supportFragmentManager.findFragmentById(R.id.addOrderFragment) as? AddOrderFragment
 //        //addOrder?.setCoorditanes(place)

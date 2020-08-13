@@ -6,15 +6,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.bullet.R
+import com.google.android.gms.maps.model.LatLng
+import kotlinx.android.synthetic.main.fragment_verify.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 
 class VerifyFragment : Fragment() {
 
+    var phoneNumber: String? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        arguments?.let {
+            phoneNumber = it.getString("number")
+        }
     }
 
     override fun onCreateView(
@@ -23,6 +29,13 @@ class VerifyFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_verify, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        button_verify.setOnClickListener{
+
+        }
     }
 
 
