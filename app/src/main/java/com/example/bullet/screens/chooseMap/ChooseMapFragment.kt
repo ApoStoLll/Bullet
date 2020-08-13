@@ -16,6 +16,7 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.libraries.places.api.Places
 import com.google.android.libraries.places.api.model.Place
 import com.google.android.libraries.places.widget.Autocomplete
 import com.google.android.libraries.places.widget.AutocompleteActivity
@@ -55,6 +56,19 @@ class ChooseMapFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
         mapFragment?.getMapAsync(callback)
+
+        val apiKey = "AIzaSyDPDGhff4wHV49OwPG2T8zRZ9-uHseLEZw"
+
+        /**
+         * Initialize Places. For simplicity, the API key is hard-coded. In a production
+         * environment we recommend using a secure mechanism to manage API keys.
+         */
+        if (!Places.isInitialized()) {
+            Places.initialize((activity as MainActivity), apiKey)
+        }
+
+// Create a new Places client instance.
+        val placesClient = Places.createClient(activity as MainActivity)
         choose_map_search_button.setOnClickListener {
             onSearchCalled()
         }
@@ -64,7 +78,7 @@ class ChooseMapFragment : Fragment() {
 
         // Set the fields to specify which types of place data to
         // return after the user has made a selection.
-        val fields = listOf(Place.Field.ID, Place.Field.NAME)
+        val fields = listOf(Place.Field.ID, Place.Field.NAME, Place.Field.LAT_LNG)
 
         // Start the autocomplete intent.
         val intent = Autocomplete.IntentBuilder(AutocompleteActivityMode.FULLSCREEN, fields)
@@ -78,7 +92,7 @@ class ChooseMapFragment : Fragment() {
                 Activity.RESULT_OK -> {
                     data?.let {
                         val place = Autocomplete.getPlaceFromIntent(data)
-                        Log.i("TAG", "Place: ${place.name}, ${place.id}")
+                        Log.e("TAG", "Place: ${place.name}, ${place.id}, ${place.latLng}")
                     }
                 }
                 AutocompleteActivity.RESULT_ERROR -> {
