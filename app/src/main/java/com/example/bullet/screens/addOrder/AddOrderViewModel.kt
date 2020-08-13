@@ -1,6 +1,7 @@
 package com.example.bullet.screens.addOrder
 
 import androidx.lifecycle.ViewModel
+import com.example.bullet.domain.models.Destination
 import com.example.bullet.domain.models.Order
 import com.example.bullet.domain.repositories.order.OrderRepository
 import com.example.bullet.domain.repositories.order.OrderRepositoryImpl
@@ -9,9 +10,10 @@ class AddOrderViewModel : ViewModel(){
 
     private var orderRepository : OrderRepository = OrderRepositoryImpl()
 
-    fun sendOrder(title : String, description : String, from : String, to : String, price : Int, id : String){
+    // id = 0  - bazovoe, change in repository
+    fun sendOrder(title : String, description : String, from : String, to : Destination, price : Int, id : String){
         val order = Order(title = title, description = description, from = from, to = to,
-            customerId = id, id = "0", orderPrice = 3)
+            customerId = id, id = "0", orderPrice = price)
         orderRepository.addOrder(order)
     }
 

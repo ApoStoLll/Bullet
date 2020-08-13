@@ -4,7 +4,7 @@ data class Order(
     var id : String,
     var title : String,
     var from : String,
-    var to : String,
+    var to : Destination,
     var customerId : String,
     var description : String,
     var orderPrice : Int

@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
 import com.example.bullet.MainActivity
 import com.example.bullet.R
+import com.example.bullet.domain.models.Destination
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.libraries.places.api.Places
 import com.google.android.libraries.places.api.model.Place
@@ -32,7 +33,7 @@ import kotlinx.android.synthetic.main.fragment_add_order.*
 class AddOrderFragment : Fragment() {
     // TODO: Rename and change types of parameters
     lateinit var viewModel: AddOrderViewModel
-    var from : LatLng = LatLng(0.0,0.0)
+    var to : Destination = Destination("name",LatLng(0.0,0.0))
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,37 +58,30 @@ class AddOrderFragment : Fragment() {
             else id = user.uid
             viewModel.sendOrder(title = order_title.text.toString(),
                 description =  order_description.text.toString(),
-                from = "hz",
-                to = order_to.text.toString(),
+                from = order_from.text.toString(),
+                to = to,
                 price = order_price.text.toString().toInt(),
                 id = id)
+            button_add_order.findNavController().navigate(R.id.mainScreenFragment)
         }
 
         val place = (activity as MainActivity).place
 
         if (place != null){
-            order_from.setText(place.name)
-            from = place.position!!
+            order_to.text = place.name
+            to = place
         }
 
-        button_choose_on_map_from.setOnClickListener{
-            val bundle = Bundle()
-            bundle.putDouble("Lat",from.latitude)
-            bundle.putDouble("Lng",from.longitude)
-            button_choose_on_map_from.findNavController().navigate(R.id.chooseMapFragment,bundle)
-        }
         button_choose_on_map_to.setOnClickListener{
-            order_to.text = "to map fragment"
+            val bundle = Bundle()
+            bundle.putDouble("Lat",to.position!!.latitude)
+            bundle.putDouble("Lng",to.position!!.longitude)
+            button_choose_on_map_to.findNavController().navigate(R.id.chooseMapFragment,bundle)
         }
-//        viewModel.updateData()
+
     }
 
-//    fun setCoorditanes(place : Place?){
-//        Log.e("COORD", "RABOTAET BLYAT")
-//        if (place != null){
-//            order_to.text = place.name
-//        }
-//    }
+
 
 
 }

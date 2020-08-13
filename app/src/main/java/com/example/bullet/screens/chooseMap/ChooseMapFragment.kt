@@ -7,12 +7,11 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.app.ShareCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.example.bullet.MainActivity
 import com.example.bullet.R
-import com.example.bullet.domain.models.NewPlace
+import com.example.bullet.domain.models.Destination
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -27,13 +26,12 @@ import com.google.android.libraries.places.widget.model.AutocompleteActivityMode
 
 
 import kotlinx.android.synthetic.main.fragment_choose_map.*
-import java.util.*
 
 
 class ChooseMapFragment : Fragment() {
 
     var googleMap : GoogleMap? = null
-    var choosenPlace : NewPlace? = null
+    var choosenPlace : Destination? = null
     var startPlace : LatLng? = null
     //Если вдруг почему-то карта не успеет загрузится до выбора локации, то локация не выберется, странно (смотри в он активити резалт)
 
@@ -44,7 +42,7 @@ class ChooseMapFragment : Fragment() {
             googleMap?.apply {
                 addMarker(MarkerOptions().position(startPlace!!).title("From"))
                 moveCamera(CameraUpdateFactory.newLatLng(startPlace))
-                animateCamera(CameraUpdateFactory.zoomTo(17.07f))
+                animateCamera(CameraUpdateFactory.zoomTo(14.04f))
             }
         }
 
@@ -53,7 +51,7 @@ class ChooseMapFragment : Fragment() {
             googleMap.apply {
                 clear()
                 addMarker(MarkerOptions().position(it).title("CustomMarker"))
-                choosenPlace = NewPlace("On map",it)
+                choosenPlace = Destination("On map",it)
             }
 
         }
@@ -115,9 +113,9 @@ class ChooseMapFragment : Fragment() {
                             clear()
                             addMarker(MarkerOptions().position(place.latLng!!).title("From"))
                             moveCamera(CameraUpdateFactory.newLatLng(place.latLng))
-                            animateCamera(CameraUpdateFactory.zoomTo(17.07f))
+                            animateCamera(CameraUpdateFactory.zoomTo(14.04f))
                         }
-                        choosenPlace = NewPlace(place.name,place.latLng)
+                        choosenPlace = Destination(place.name,place.latLng)
                         Log.e("TAG", "Place: ${place.name}, ${place.id}, ${place.latLng}")
                     }
                 }

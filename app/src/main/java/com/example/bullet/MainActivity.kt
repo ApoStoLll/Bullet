@@ -3,19 +3,14 @@ package com.example.bullet
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.Navigation
-import com.example.bullet.domain.models.NewPlace
-import com.example.bullet.screens.addOrder.AddOrderFragment
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.libraries.places.api.Places
-import com.google.android.libraries.places.api.model.Place
-import com.google.android.libraries.places.api.net.PlacesClient
+import com.example.bullet.domain.models.Destination
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
 class MainActivity : AppCompatActivity() {
 
-    var place : NewPlace? = null
+    var place : Destination? = null
     var user : FirebaseUser? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
