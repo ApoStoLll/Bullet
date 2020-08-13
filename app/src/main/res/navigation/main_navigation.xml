@@ -16,8 +16,8 @@
             android:id="@+id/action_mainScreenFragment_to_mapsFragment"
             app:destination="@id/mapsFragment" />
         <action
-            android:id="@+id/action_mainScreenFragment_to_orderInfoFragment"
-            app:destination="@id/orderInfoFragment" />
+            android:id="@+id/action_mainScreenFragment_to_addOrderFragment"
+            app:destination="@id/addOrderFragment" />
     </fragment>
 
     <fragment
@@ -38,11 +38,19 @@
         android:id="@+id/addOrderFragment"
         android:name="com.example.bullet.screens.addOrder.AddOrderFragment"
         android:label="fragment_add_order"
-        tools:layout="@layout/fragment_add_order" />
+        tools:layout="@layout/fragment_add_order" >
+        <action
+            android:id="@+id/action_addOrderFragment_to_chooseMapFragment"
+            app:destination="@id/chooseMapFragment" />
+    </fragment>
     <fragment
         android:id="@+id/orderInfoFragment"
         android:name="com.example.bullet.screens.orderInfo.OrderInfoFragment"
         android:label="fragment_order_info"
         tools:layout="@layout/fragment_order_info" />
+    <fragment
+        android:id="@+id/chooseMapFragment"
+        android:name="com.example.bullet.screens.chooseMap.ChooseMapFragment"
+        android:label="ChooseMapFragment" />
 
 </navigation>

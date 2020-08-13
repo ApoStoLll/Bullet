@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.findNavController
 import com.example.bullet.R
 import kotlinx.android.synthetic.main.fragment_add_order.*
 
@@ -47,6 +48,7 @@ class AddOrderFragment : Fragment() {
         }
 
         button_choose_on_map_from.setOnClickListener{
+            button_choose_on_map_from.findNavController().navigate(R.id.chooseMapFragment)
             order_from.text = "from map fragment"
         }
         button_choose_on_map_to.setOnClickListener{
