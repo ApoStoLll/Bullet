@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 import com.example.bullet.MainActivity
 import com.example.bullet.R
 import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
@@ -29,6 +30,8 @@ import java.util.*
 
 class ChooseMapFragment : Fragment() {
 
+    var googleMap : GoogleMap? = null
+
     private val callback = OnMapReadyCallback { googleMap ->
         /**
          * Manipulates the map once available.
@@ -39,9 +42,8 @@ class ChooseMapFragment : Fragment() {
          * install it inside the SupportMapFragment. This method will only be triggered once the
          * user has installed Google Play services and returned to the app.
          */
-        val sydney = LatLng(-34.0, 151.0)
-        googleMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
-        googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
+        // if googleMap != null
+        this.googleMap = googleMap
     }
 
     override fun onCreateView(
@@ -54,7 +56,7 @@ class ChooseMapFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
+        val mapFragment = childFragmentManager.findFragmentById(R.id.choose_map_fragment) as SupportMapFragment?
         mapFragment?.getMapAsync(callback)
 
         val apiKey = "AIzaSyDPDGhff4wHV49OwPG2T8zRZ9-uHseLEZw"
@@ -92,6 +94,8 @@ class ChooseMapFragment : Fragment() {
                 Activity.RESULT_OK -> {
                     data?.let {
                         val place = Autocomplete.getPlaceFromIntent(data)
+                        googleMap?.addMarker(MarkerOptions().position(place.latLng!!).title("Marker"))
+                        googleMap?.moveCamera(CameraUpdateFactory.newLatLng(place.latLng))
                         Log.e("TAG", "Place: ${place.name}, ${place.id}, ${place.latLng}")
                     }
                 }
