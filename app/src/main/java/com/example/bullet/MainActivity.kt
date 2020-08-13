@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val navController = Navigation.findNavController(this, R.id.nav_host_fragment)
-        navController.navigate(R.id.mainScreenFragment)
+        navController.navigate(R.id.authFragment)
     }
 
 

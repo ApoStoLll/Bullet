@@ -38,6 +38,7 @@ class AuthFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         button_complete.setOnClickListener {
             val bundle = Bundle()
+
             bundle.putString("number",editTextPhone.text.toString())
             button_complete.findNavController().navigate(R.id.verifyFragment,bundle)
         }
