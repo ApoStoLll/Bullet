@@ -23,6 +23,7 @@ import java.util.concurrent.TimeUnit
 class VerifyFragment : Fragment() {
 
     var phoneNumber: String? = null
+    var verificationId : String? = null
     var callbacks = object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
 
         override fun onVerificationCompleted(credential: PhoneAuthCredential) {
@@ -34,7 +35,6 @@ class VerifyFragment : Fragment() {
             //     user action.
             Log.d("onVerificationCompleted", "onVerificationCompleted:$credential")
 
-            signInWithPhoneAuthCredential(credential)
         }
 
         override fun onVerificationFailed(e: FirebaseException) {
@@ -51,6 +51,22 @@ class VerifyFragment : Fragment() {
             }
 
             // Show a message and update the UI
+            // ...
+        }
+
+        override fun onCodeSent(
+            verificationId: String,
+            token: PhoneAuthProvider.ForceResendingToken
+        ) {
+            // The SMS verification code has been sent to the provided phone number, we
+            // now need to ask the user to enter the code and then construct a credential
+            // by combining the code with a verification ID.
+            Log.d("onCodeSent", "onCodeSent:$verificationId")
+
+            // Save verification ID and resending token so we can use them later
+            Log.e("onCodeSent", token.toString())
+            Log.e("Verification code:", verificationId)
+            this@VerifyFragment.verificationId = verificationId
             // ...
         }
 
@@ -94,7 +110,11 @@ class VerifyFragment : Fragment() {
             (activity as MainActivity), // Activity (for callback binding)
             callbacks) // OnVerificationStateChangedCallbacks
         button_verify.setOnClickListener{
-
+            val credential =
+                verificationId?.let { it1 -> PhoneAuthProvider.getCredential(it1, edit_text_verify.text.toString()) }
+            if (credential != null) {
+                signInWithPhoneAuthCredential(credential)
+            }
         }
     }
 

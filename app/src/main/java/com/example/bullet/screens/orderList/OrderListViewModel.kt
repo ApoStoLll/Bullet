@@ -20,11 +20,11 @@ class OrderListViewModel : ViewModel() {
             .setQuery(query
             ) { snapshot ->
                 Order(
-                    snapshot.child("id").value.toString().toInt(),
+                    snapshot.child("id").value.toString(),
                     snapshot.child("title").value.toString(),
                     snapshot.child("from").value.toString(),
                     snapshot.child("to").value.toString(),
-                    snapshot.child("customerId").value.toString().toInt(),
+                    snapshot.child("customerId").value.toString(),
                     snapshot.child("description").value.toString(),
                     snapshot.child("orderPrice").value.toString().toInt()
                 )

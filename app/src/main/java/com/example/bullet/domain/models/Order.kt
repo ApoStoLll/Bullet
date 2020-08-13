@@ -1,11 +1,11 @@
 package com.example.bullet.domain.models
 
 data class Order(
-    var id : Int,
+    var id : String,
     var title : String,
     var from : String,
     var to : String,
-    var customerId : Int,
+    var customerId : String,
     var description : String,
     var orderPrice : Int
 )

@@ -50,11 +50,17 @@ class AddOrderFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         button_add_order.setOnClickListener {
+            lateinit var id : String
+            val user = (activity as MainActivity).user
+            if (user == null)
+                id = "WTF"
+            else id = user.uid
             viewModel.sendOrder(title = order_title.text.toString(),
                 description =  order_description.text.toString(),
                 from = "hz",
                 to = order_to.text.toString(),
-                price = order_price.text.toString().toInt())
+                price = order_price.text.toString().toInt(),
+                id = id)
         }
 
         val place = (activity as MainActivity).place

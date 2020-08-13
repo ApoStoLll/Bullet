@@ -67,7 +67,7 @@ class OrderListFragment : Fragment() {
             override fun onItemClick(item: Order) {
 //                Log.e("KEK", item.title)
                 val bundle = Bundle()
-                bundle.putInt("param1",item.id)
+                bundle.putString("param1",item.id)
                 RecycleOrders.findNavController().navigate(R.id.orderInfoFragment,bundle)
 
             }

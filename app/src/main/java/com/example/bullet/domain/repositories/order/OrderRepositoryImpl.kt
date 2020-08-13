@@ -25,7 +25,11 @@ class OrderRepositoryImpl : OrderRepository  {
 
     override fun addOrder(order : Order) {
         //dbRef.setValue("hello")
-        dbRef.child(order.id.toString()).setValue(order)
+        val idLog = dbRef.push().key
+        if (idLog != null) {
+            order.id = idLog
+        }
+        dbRef.child(order.id).setValue(order)
     }
 
 //    override fun readData(listener : ValueEventListener){

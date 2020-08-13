@@ -15,12 +15,12 @@ private const val ARG_PARAM1 = "param1"
 
 class OrderInfoFragment : Fragment() {
     // TODO: Rename and change types of parameters
-    private var orderId: Int? = null
+    private var orderId: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            orderId = it.getInt(ARG_PARAM1)
+            orderId = it.getString(ARG_PARAM1)
         }
     }
 
@@ -34,24 +34,8 @@ class OrderInfoFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        textId.text = orderId.toString()
+        textId.text = orderId
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param id Parameter 1 - orderId.
-         * @return A new instance of fragment OrderInfoFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(id: Int) =
-            OrderInfoFragment().apply {
-                arguments = Bundle().apply {
-                    putInt(ARG_PARAM1, id)
-                }
-            }
-    }
+
 }
