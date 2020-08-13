@@ -96,6 +96,7 @@ class ChooseMapFragment : Fragment() {
                         val place = Autocomplete.getPlaceFromIntent(data)
                         googleMap?.addMarker(MarkerOptions().position(place.latLng!!).title("Marker"))
                         googleMap?.moveCamera(CameraUpdateFactory.newLatLng(place.latLng))
+                        googleMap?.animateCamera(CameraUpdateFactory.zoomTo(17.07f))
                         Log.e("TAG", "Place: ${place.name}, ${place.id}, ${place.latLng}")
                     }
                 }
