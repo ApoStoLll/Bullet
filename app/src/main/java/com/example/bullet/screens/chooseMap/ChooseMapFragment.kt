@@ -32,18 +32,20 @@ import java.util.*
 class ChooseMapFragment : Fragment() {
 
     var googleMap : GoogleMap? = null
+    var choosenPlace : LatLng? = null
+
+    //Если вдруг почему-то карта не успеет загрузится до выбора локации, то локация не выберется, странно (смотри в он активити резалт)
+
     private val callback = OnMapReadyCallback { googleMap ->
-        /**
-         * Manipulates the map once available.
-         * This callback is triggered when the map is ready to be used.
-         * This is where we can add markers or lines, add listeners or move the camera.
-         * In this case, we just add a marker near Sydney, Australia.
-         * If Google Play services is not installed on the device, the user will be prompted to
-         * install it inside the SupportMapFragment. This method will only be triggered once the
-         * user has installed Google Play services and returned to the app.
-         */
-        // if googleMap != null
         this.googleMap = googleMap
+        googleMap.setOnMapLongClickListener {
+            googleMap.apply {
+                clear()
+                addMarker(MarkerOptions().position(it).title("CustomMarker"))
+                choosenPlace = it
+            }
+
+        }
     }
 
     override fun onCreateView(
@@ -61,33 +63,25 @@ class ChooseMapFragment : Fragment() {
 
         val apiKey = "AIzaSyDPDGhff4wHV49OwPG2T8zRZ9-uHseLEZw"
 
-        /**
-         * Initialize Places. For simplicity, the API key is hard-coded. In a production
-         * environment we recommend using a secure mechanism to manage API keys.
-         */
         if (!Places.isInitialized()) {
             Places.initialize((activity as MainActivity), apiKey)
         }
-
-// Create a new Places client instance.
         val placesClient = Places.createClient(activity as MainActivity)
+
         choose_map_search_button.setOnClickListener {
             onSearchCalled()
         }
 
         button_ready.setOnClickListener{
+//            (activity as MainActivity).setCoorditanesTo(place = choosenPlace)
+            (activity as MainActivity).place = choosenPlace
             button_ready.findNavController().popBackStack()
         }
 
     }
 
     fun onSearchCalled() {
-
-        // Set the fields to specify which types of place data to
-        // return after the user has made a selection.
         val fields = listOf(Place.Field.ID, Place.Field.NAME, Place.Field.LAT_LNG)
-
-        // Start the autocomplete intent.
         val intent = Autocomplete.IntentBuilder(AutocompleteActivityMode.FULLSCREEN, fields)
             .build(activity as MainActivity)
         startActivityForResult(intent, 1)
@@ -99,10 +93,13 @@ class ChooseMapFragment : Fragment() {
                 Activity.RESULT_OK -> {
                     data?.let {
                         val place = Autocomplete.getPlaceFromIntent(data)
-                        googleMap?.clear()
-                        googleMap?.addMarker(MarkerOptions().position(place.latLng!!).title("From"))
-                        googleMap?.moveCamera(CameraUpdateFactory.newLatLng(place.latLng))
-                        googleMap?.animateCamera(CameraUpdateFactory.zoomTo(17.07f))
+                        googleMap?.apply {
+                            clear()
+                            addMarker(MarkerOptions().position(place.latLng!!).title("From"))
+                            moveCamera(CameraUpdateFactory.newLatLng(place.latLng))
+                            animateCamera(CameraUpdateFactory.zoomTo(17.07f))
+                        }
+                        choosenPlace = place.latLng
                         Log.e("TAG", "Place: ${place.name}, ${place.id}, ${place.latLng}")
                     }
                 }

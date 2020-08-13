@@ -1,13 +1,20 @@
 package com.example.bullet.screens.addOrder
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
+import com.example.bullet.MainActivity
 import com.example.bullet.R
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.libraries.places.api.Places
+import com.google.android.libraries.places.api.model.Place
+import com.google.android.libraries.places.api.net.FetchPlaceRequest
+import com.google.android.libraries.places.api.net.PlacesClient
 import kotlinx.android.synthetic.main.fragment_add_order.*
 
 
@@ -47,6 +54,12 @@ class AddOrderFragment : Fragment() {
                 price = order_price.text.toString().toInt())
         }
 
+        val place = (activity as MainActivity).place
+
+        if (place != null){
+            order_from.text = place.toString()
+        }
+
         button_choose_on_map_from.setOnClickListener{
             button_choose_on_map_from.findNavController().navigate(R.id.chooseMapFragment)
             order_from.text = "from map fragment"
@@ -56,6 +69,13 @@ class AddOrderFragment : Fragment() {
         }
 //        viewModel.updateData()
     }
+
+//    fun setCoorditanes(place : Place?){
+//        Log.e("COORD", "RABOTAET BLYAT")
+//        if (place != null){
+//            order_to.text = place.name
+//        }
+//    }
 
 
 }
