@@ -11,12 +11,14 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.bullet.MainActivity
 import com.example.bullet.R
 import com.example.bullet.adapters.OrderClickHandler
 import com.example.bullet.adapters.OrderListAdapter
 import com.example.bullet.domain.models.Order
 import com.example.bullet.screens.orderInfo.OrderInfoFragment
 import com.firebase.ui.database.FirebaseRecyclerAdapter
+import com.google.android.gms.location.LocationServices
 import kotlinx.android.synthetic.main.fragment_order_list.*
 
 
@@ -61,7 +63,7 @@ class OrderListFragment : Fragment() {
         val linearLayoutManager =  LinearLayoutManager(context)
         RecycleOrders.layoutManager = linearLayoutManager
         RecycleOrders.setHasFixedSize(true)
-        adapter = OrderListAdapter(viewModel.getFirebaseOptions())
+        adapter = OrderListAdapter(viewModel.getFirebaseOptions(), LocationServices.getFusedLocationProviderClient(activity as MainActivity))
         (adapter as OrderListAdapter).attachClickHandler(object : OrderClickHandler{
             @SuppressLint("ShowToast")
             override fun onItemClick(item: Order) {

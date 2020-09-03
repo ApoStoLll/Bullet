@@ -7,22 +7,25 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
+import com.example.bullet.MainActivity
 import com.example.bullet.R
 import com.example.bullet.domain.models.Order
 import com.firebase.ui.database.FirebaseRecyclerAdapter
 import com.firebase.ui.database.FirebaseRecyclerOptions
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 
 interface OrderClickHandler{
     fun onItemClick(item : Order)
 }
 
-class OrderListAdapter(options: FirebaseRecyclerOptions<Order>) : FirebaseRecyclerAdapter<Order, OrderListAdapter.ViewHolder>(
+class OrderListAdapter(options: FirebaseRecyclerOptions<Order>,val location:FusedLocationProviderClient) : FirebaseRecyclerAdapter<Order, OrderListAdapter.ViewHolder>(
     options
 ) {
 
     private var orderClickHandler : OrderClickHandler? = null
 
-    public fun attachClickHandler(orderClickHandler: OrderClickHandler){
+    fun attachClickHandler(orderClickHandler: OrderClickHandler){
         this.orderClickHandler = orderClickHandler
     }
 
@@ -34,8 +37,9 @@ class OrderListAdapter(options: FirebaseRecyclerOptions<Order>) : FirebaseRecycl
 
 
     override fun onBindViewHolder(holder: OrderListAdapter.ViewHolder, position: Int, model: Order) {
+
         holder.setTitle(model.title)
-        holder.setDistance(model.id.toString())
+        holder.setDistance(location.toString())
         holder.root.setOnClickListener{
             orderClickHandler?.onItemClick(item = model)
         }
