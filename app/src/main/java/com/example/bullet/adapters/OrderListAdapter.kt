@@ -19,7 +19,7 @@ interface OrderClickHandler{
     fun onItemClick(item : Order)
 }
 
-class OrderListAdapter(options: FirebaseRecyclerOptions<Order>,val location:FusedLocationProviderClient) : FirebaseRecyclerAdapter<Order, OrderListAdapter.ViewHolder>(
+class OrderListAdapter(options: FirebaseRecyclerOptions<Order>) : FirebaseRecyclerAdapter<Order, OrderListAdapter.ViewHolder>(
     options
 ) {
 
@@ -39,7 +39,6 @@ class OrderListAdapter(options: FirebaseRecyclerOptions<Order>,val location:Fuse
     override fun onBindViewHolder(holder: OrderListAdapter.ViewHolder, position: Int, model: Order) {
 
         holder.setTitle(model.title)
-        holder.setDistance(location.toString())
         holder.root.setOnClickListener{
             orderClickHandler?.onItemClick(item = model)
         }

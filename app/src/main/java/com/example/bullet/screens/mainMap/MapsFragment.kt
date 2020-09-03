@@ -1,21 +1,27 @@
 package com.example.bullet.screens.mainMap
 
-import androidx.fragment.app.Fragment
-
+import android.Manifest
+import android.annotation.SuppressLint
+import android.content.pm.PackageManager
+import android.location.Location
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.app.ActivityCompat
+import androidx.fragment.app.Fragment
+import com.example.bullet.MainActivity
 import com.example.bullet.R
-
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import kotlinx.android.synthetic.main.fragment_maps.*
 
 class MapsFragment : Fragment() {
 
+    @SuppressLint("MissingPermission")
     private val callback = OnMapReadyCallback { googleMap ->
         /**
          * Manipulates the map once available.
@@ -28,6 +34,7 @@ class MapsFragment : Fragment() {
          */
         val sydney = LatLng(-34.0, 151.0)
         val kyiv = LatLng(50.45,30.5)
+
         googleMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
         googleMap.addMarker(MarkerOptions().position(kyiv).title("Marker in Kyiv"))
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(kyiv))

@@ -63,7 +63,7 @@ class OrderListFragment : Fragment() {
         val linearLayoutManager =  LinearLayoutManager(context)
         RecycleOrders.layoutManager = linearLayoutManager
         RecycleOrders.setHasFixedSize(true)
-        adapter = OrderListAdapter(viewModel.getFirebaseOptions(), LocationServices.getFusedLocationProviderClient(activity as MainActivity))
+        adapter = OrderListAdapter(viewModel.getFirebaseOptions())
         (adapter as OrderListAdapter).attachClickHandler(object : OrderClickHandler{
             @SuppressLint("ShowToast")
             override fun onItemClick(item: Order) {
@@ -71,7 +71,6 @@ class OrderListFragment : Fragment() {
                 val bundle = Bundle()
                 bundle.putString("param1",item.id)
                 RecycleOrders.findNavController().navigate(R.id.orderInfoFragment,bundle)
-
             }
         })
         RecycleOrders.adapter = adapter
