@@ -17,7 +17,7 @@ class OrderListViewModel : ViewModel() {
     private var orderRepository : OrderRepository = OrderRepositoryImpl()
 
     fun getFirebaseOptions(): FirebaseRecyclerOptions<Order> {
-        val query = orderRepository.dbRef
+        val query = orderRepository.dbRef.orderByChild("to/position")
         val options = FirebaseRecyclerOptions.Builder<Order>()
             .setQuery(query
             ) { snapshot ->

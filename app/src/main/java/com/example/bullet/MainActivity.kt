@@ -50,8 +50,10 @@ class MainActivity : AppCompatActivity() {
         mFusedLocationProviderClient.lastLocation.addOnCompleteListener {
             if (it.isSuccessful) {
                 val res = it.result
-                val latlng = LatLng(res!!.latitude, res.longitude)
-                callback.setLocation(latlng)
+                if(res != null){
+                    val latlng = LatLng(res.latitude, res.longitude)
+                    callback.setLocation(latlng)
+                }
                 //Log.e("Location", LatLng(mFusedLocationProviderClient.lastLocation.result!!.latitude, mFusedLocationProviderClient.lastLocation.result!!.longitude).toString())
             }
         }
