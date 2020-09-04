@@ -29,14 +29,14 @@ class OrderListAdapter(options: FirebaseRecyclerOptions<Order>) : FirebaseRecycl
         this.orderClickHandler = orderClickHandler
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OrderListAdapter.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view: View = LayoutInflater.from(parent.context)
             .inflate(R.layout.order, parent, false)
         return ViewHolder(view)
     }
 
 
-    override fun onBindViewHolder(holder: OrderListAdapter.ViewHolder, position: Int, model: Order) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int, model: Order) {
 
         holder.setTitle(model.title)
         holder.root.setOnClickListener{

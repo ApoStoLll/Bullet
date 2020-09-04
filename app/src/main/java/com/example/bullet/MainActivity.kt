@@ -3,6 +3,8 @@ package com.example.bullet
 import android.Manifest
 import android.annotation.SuppressLint
 import android.content.pm.PackageManager
+import android.location.Address
+import android.location.Geocoder
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
@@ -15,6 +17,7 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import java.util.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -53,6 +56,15 @@ class MainActivity : AppCompatActivity() {
                 if(res != null){
                     val latlng = LatLng(res.latitude, res.longitude)
                     callback.setLocation(latlng)
+
+                    val gcd = Geocoder(this, Locale.getDefault())
+                    val addresses: List<Address> =
+                        gcd.getFromLocation(latlng.latitude, latlng.longitude, 1)
+                    if (addresses.size > 0) {
+                        Log.e("City:",addresses[0].getLocality())
+                    } else {
+                        // do your stuff
+                    }
                 }
                 //Log.e("Location", LatLng(mFusedLocationProviderClient.lastLocation.result!!.latitude, mFusedLocationProviderClient.lastLocation.result!!.longitude).toString())
             }
