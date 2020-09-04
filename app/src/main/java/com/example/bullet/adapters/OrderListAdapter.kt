@@ -3,27 +3,24 @@ package com.example.bullet.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
-import com.example.bullet.MainActivity
 import com.example.bullet.R
 import com.example.bullet.domain.models.Order
+import com.example.bullet.extensions.FirebaseCustomRecyclerAdapter
 import com.firebase.ui.database.FirebaseRecyclerAdapter
 import com.firebase.ui.database.FirebaseRecyclerOptions
-import com.google.android.gms.location.FusedLocationProviderClient
-import com.google.android.gms.location.LocationServices
 
 interface OrderClickHandler{
     fun onItemClick(item : Order)
 }
 
-class OrderListAdapter(options: FirebaseRecyclerOptions<Order>) : FirebaseRecyclerAdapter<Order, OrderListAdapter.ViewHolder>(
-    options
-) {
+class OrderListAdapter(options: FirebaseRecyclerOptions<Order>) :
+    FirebaseCustomRecyclerAdapter<Order, OrderListAdapter.ViewHolder>(options) {
 
     private var orderClickHandler : OrderClickHandler? = null
+
 
     fun attachClickHandler(orderClickHandler: OrderClickHandler){
         this.orderClickHandler = orderClickHandler

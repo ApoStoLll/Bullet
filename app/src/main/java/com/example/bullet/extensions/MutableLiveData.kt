@@ -6,3 +6,4 @@ import androidx.lifecycle.MutableLiveData
 fun <T : Any?> MutableLiveData<T>.default(initialValue: T) = apply { setValue(initialValue) }
 // Set new value for any tye of MutableLiveData
 fun <T> MutableLiveData<T>.set(newValue: T) = apply { setValue(newValue) }
+
